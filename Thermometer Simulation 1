@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<windows.h>
+#include<time.h>
+
+int main(){
+	
+	printf("This is a simulation of a thermometer \n");
+	
+	int i;
+	double initialtemperature = 25;
+	
+	for(i=0; i<10; i++){
+		
+		srand(time(0)); 
+		
+		double error;
+		
+		error = (rand()%1001 / 100) - 5; // an error is introduced to make the simulation realistic
+		
+		double temperature;
+		
+		temperature = initialtemperature + error;
+		
+		printf("The temperature T%d : 	%.2f \n", i+1, temperature);
+		
+		Sleep(3000); // a time delay of 3 seconds before the next reading
+	}
+	
+	return 0;
+}
