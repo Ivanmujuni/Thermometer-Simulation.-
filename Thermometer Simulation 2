@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<Windows.h>
+#include<time.h>
+
+int main(){
+	
+	int i;
+
+		
+	double initialtemperature = 25;
+			
+	srand(time(0));
+		
+	
+	for(i=0; i<10; i++){
+		
+		float error;
+		
+		error = (rand()%1001)/100 - 5;
+		
+		double temperature;
+		
+		temperature = initialtemperature + error;
+		
+		time_t now;
+		
+		time(&now);
+		
+		struct tm*local = localtime(&now);
+		
+		char timestamp[40];
+		
+		strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", local); //this helps us print out a timestamp for the diffrent times in the day when the readings were taken
+		
+		printf("[%s] Tempearture Reading %d : %.2f C \n", timestamp, i+1, temperature);
+		
+		Sleep(2000);
+	}
+	 return 0;
+}
